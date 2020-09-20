@@ -7,5 +7,6 @@ RSpec.describe 'GeocodeService' do
     expect(results).to be_instance_of(Hash)
     expect(results.size).to eq(2)
     expect(results.keys).to eq([:lat, :lng])
+    expect(results.values).to_not include(nil)
   end
 end
