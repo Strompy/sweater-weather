@@ -3,7 +3,6 @@ class GeocodeService
     response = get_json(location)
     parse = JSON.parse(response.body, symbolize_names: true)
     parse[:results][0][:locations][0][:latLng]
-    require "pry"; binding.pry
   end
 
   private
