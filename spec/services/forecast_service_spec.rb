@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'ForecastService' do
   it 'searchs by coordinates and returns weather data', :vcr do
-    coordinates = { lat: 39.738453, lng: -104.984853}
+    coordinates = { lat: 39.738453, lng: -104.984853 }
     results = ForecastService.forecast_by_coordinates(coordinates)
 
     expect(results).to be_instance_of(Hash)
