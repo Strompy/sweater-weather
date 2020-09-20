@@ -8,7 +8,7 @@ class GeocodeService
   private
 
   def self.get_json(location)
-    response = conn.get('address') do |req|
+    conn.get('address') do |req|
       req.params['location']= location
     end
   end
