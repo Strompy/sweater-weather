@@ -1,8 +1,8 @@
 class GeocodeService
   def self.search(location)
     response = get_json(location)
-    parse = JSON.parse(response.body, symbolize_names: true)
-    parse[:results][0][:locations][0][:latLng]
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    parsed[:results][0][:locations][0][:latLng]
   end
 
   private
@@ -14,7 +14,7 @@ class GeocodeService
   end
 
   def self.conn
-    conn = Faraday.new(ENV['GEOCODE_SERVICE_URL']) do |f|
+    Faraday.new(ENV['GEOCODE_SERVICE_URL']) do |f|
       f.params[:key] = ENV['MAPQUEST_CONSUMER_KEY']
     end
   end
