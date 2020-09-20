@@ -62,10 +62,3 @@ RSpec.describe 'Get Weather by City Endpoint' do
     end
   end
 end
-
-# Request:
-#
-# GET /api/v1/forecast?location=denver,co
-# Content-Type: application/json
-# Accept: application/json
-#
