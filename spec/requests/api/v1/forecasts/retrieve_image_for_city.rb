@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Get background image endpoint" do
-  it "returns image and data" do
+  it "returns image and data", :vcr do
     location = 'denver,co'
 
     get "/api/v1/backgrounds?location=#{location}"
