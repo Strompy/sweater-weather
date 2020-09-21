@@ -2,11 +2,7 @@ class ImageService
   def self.get_image(keyword)
     response = get_json(keyword)
     parsed = JSON.parse(response.body, symbolize_names: true)
-    if parsed[:hits].size < 2
-      parsed[:hits][0]
-    else
-      parsed[:hits][1]
-    end
+    parsed[:hits][1]
   end
 
   private
