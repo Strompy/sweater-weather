@@ -1,7 +1,7 @@
 class ClimbingRoutesFacade
   def self.route_info(location)
     geocode = GeocodeService.search(location)
-    forecast = self.get_forecast(geocode, location)
+    forecast = get_forecast(geocode, location)
     routes = create_routes(geocode)
     ClimbingRoute.new(location, forecast, routes)
   end
