@@ -17,6 +17,7 @@ RSpec.describe "Climbing Routes Location endpoint" do
     expect(attributes[:location]).to eq(location)
     expect(attributes[:forecast].keys).to eq([:summary, :temperature])
     expect(attributes[:forecast].values).to_not include(nil)
+
     routes = attributes[:routes]
     routes.each do |route|
       expect(route.keys).to eq([:name, :type, :rating, :location, :distance_to_route])
