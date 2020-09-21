@@ -13,7 +13,7 @@ RSpec.describe "Get background image endpoint" do
     # assertions
     expect(parsed[:type]).to eq('image')
     image_info = parsed[:attributes]
-    expect(image_info.key).to eq([:location, :image_url, :credit])
+    expect(image_info.keys).to eq([:location, :image_url, :credit])
     expect(image_info[:location]).to eq(location)
     expect(image_info[:image_url]).to_not be_nil
     expect(image_info[:credit].keys).to eq([:source, :author, :logo])
