@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'RoutesService' do
-  it 'searched by coordinates and returns 10 routes' do
+  it 'searched by coordinates and returns 10 routes', :vcr do
     coordinates = {:lat=>36.147506, :lng=>-82.413996}
     results = RoutesService.nearby_routes(coordinates)
 
