@@ -24,7 +24,12 @@ RSpec.describe ClimbingRoute, :vcr do
     expect(@climbing_route).to be_instance_of(ClimbingRoute)
     expect(@climbing_route.id).to eq(nil)
     expect(@climbing_route.location).to eq(@location)
-    expect(@climbing_route.forecast).to eq(@forecast)
+    expect(@climbing_route.forecast).to eq(
+      {
+        summary: @forecast.current[:description],
+        temperature: @forecast.current[:temp]
+      }
+    )
     expect(@climbing_route.routes).to eq(@routes)
   end
 end
