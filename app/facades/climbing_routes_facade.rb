@@ -4,12 +4,8 @@ class ClimbingRoutesFacade
     forecast_data = ForecastService.forecast_by_coordinates(geocode)
     forecast = Forecast.new(forecast_data, location)
     routes_data = RoutesService.nearby_routes(geocode)
-    require "pry"; binding.pry
     routes = create_routes(routes_data, geocode)
     ClimbingRoute.new(location, forecast, routes)
-    # forecast_info needed => summary, temperature
-
-    # DirectionsService.directions(location?)
   end
 
   private
