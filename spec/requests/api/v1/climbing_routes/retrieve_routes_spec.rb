@@ -9,9 +9,11 @@ RSpec.describe "Climbing Routes Location endpoint" do
     expect(response.content_type).to eq('application/json')
     parsed = JSON.parse(response.body, symbolize_names: true)[:data]
 
+    expect(parsed.keys).to eq([:id, :type, :attributes])
     expect(parsed[:type]).to eq('climbing route')
 
     attributes = parsed[:attributes]
+    expect(attributes.keys).to eq([:location, :forecast, :routes])
     expect(attributes[:location]).to eq(location)
     expect(attributes[:forecast].keys).to eq([:summary, :temperature])
     expect(attributes[:forecast].values).to_not include(nil)
