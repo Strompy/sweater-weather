@@ -1,7 +1,7 @@
 class RoutesService
   def self.nearby_routes(coordinates)
     response = get_json('get-routes-for-lat-lon', coordinates)
-    parsed = JSON.parse(response.body, symbolize_names: true)[:routes]
+    JSON.parse(response.body, symbolize_names: true)[:routes]
   end
 
   private

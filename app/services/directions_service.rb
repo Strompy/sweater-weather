@@ -1,7 +1,7 @@
 class DirectionsService
   def self.directions(from, to)
     response = get_json('route', from, to)
-    parsed = JSON.parse(response.body, symbolize_names: true)[:route]
+    JSON.parse(response.body, symbolize_names: true)[:route]
   end
 
   private
