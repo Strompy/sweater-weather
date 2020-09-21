@@ -1,7 +1,7 @@
 class RoutesService
   def self.nearby_routes(coordinates)
-    require "pry"; binding.pry
-    get_json('get-routes-for-lat-lon', coordinates)
+    response = get_json('get-routes-for-lat-lon', coordinates)
+    parsed = JSON.parse(response.body, symbolize_names: true)[:routes]
   end
 
   private
@@ -10,6 +10,7 @@ class RoutesService
     conn.get(uri) do |req|
       req.params[:lat] = query[:lat]
       req.params[:lon] = query[:lng]
+      req.params[:maxResults] = 10
     end
   end
 
