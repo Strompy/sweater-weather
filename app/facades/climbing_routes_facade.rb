@@ -15,9 +15,9 @@ class ClimbingRoutesFacade
 
   def self.create_routes(starting_coordinates)
     routes = RoutesService.nearby_routes(starting_coordinates)
-    from = starting_coordinates[:lat].to_s + "," + starting_coordinates[:lng].to_s
+    from = format_coordinates(starting_coordinates)
     routes.map do |route|
-      to = route[:latitude].to_s + "," + route[:longitude].to_s
+      to = format_coordinates(route)
       distance = DirectionsService.directions(from, to)[:distance]
       {
         "name": route[:name],
@@ -29,4 +29,11 @@ class ClimbingRoutesFacade
     end
   end
 
+  def self.format_coordinates(coordinates)
+    if coordinates[:lat]
+      coordinates[:lat].to_s + "," + coordinates[:lng].to_s
+    else
+      coordinates[:latitude].to_s + "," + coordinates[:longitude].to_s
+    end
+  end
 end
