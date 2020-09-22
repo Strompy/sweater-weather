@@ -2,7 +2,10 @@ class Api::V1::RoadTripController < ApplicationController
   before_action :current_user
 
   def create
-    require "pry"; binding.pry
+    origin = trip_params[:origin]
+    destination = trip_params[:destination]
+    trip = RoadTripFacade.plan_trip(origin, destination)
+    render json: RoadTripSerializer.new(trip)
   end
 
   private
