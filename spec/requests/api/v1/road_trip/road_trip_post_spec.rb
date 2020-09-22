@@ -34,11 +34,42 @@ RSpec.describe 'Road Trip endpoint' do
 
   end
   it 'denies a request with no api key' do
-    # expect(response.status).to eq(401)
+    origin = 'Denver,CO'
+    destination = 'Pueblo,co'
 
+    headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+    user_params = {
+      "origin": origin,
+      "destination": destination,
+    }
+
+    post '/api/v1/road_trip', headers: headers, params: JSON.generate(user_params)
+
+    expect(response.status).to eq(401)
+    expect(response.content_type).to eq('application/json')
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed.size).to eq(1)
+    expect(parsed[:errors]).to eq('API key required')
   end
   it 'denies a request with bad api key' do
-    # expect(response.status).to eq(401)
+    origin = 'Denver,CO'
+    destination = 'Pueblo,co'
 
+    headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+    user_params = {
+      "origin": origin,
+      "destination": destination,
+      "api_key": 'dudewheresmykey?'
+    }
+
+    post '/api/v1/road_trip', headers: headers, params: JSON.generate(user_params)
+
+    expect(response.status).to eq(401)
+    expect(response.content_type).to eq('application/json')
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed.size).to eq(1)
+    expect(parsed[:errors]).to eq('Invalid key')
   end
 end
