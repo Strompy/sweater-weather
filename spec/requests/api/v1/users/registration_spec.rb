@@ -34,6 +34,29 @@ RSpec.describe 'Users Endpoint' do
   end
   it 'wont accept a duplicate email' do
     # expect(response.status).to eq(400)
+    og_user = create(:user, email: "whatever@example.com")
+    headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+    user_params = {
+      "email": "whatever@example.com",
+      "password": "password",
+      "password_confirmation": "password"
+    }
+
+    expect(User.count).to eq(1)
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+
+    expect(response.status).to eq(400)
+    expect(response.content_type).to eq('application/json')
+
+    expect(User.count).to eq(1)
+    user = User.last
+    expect(user).to eq(og_user)
+
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed[:errors]).to eq('Email has already been taken')
+    expect(parsed[:id]).to be_nil
+    expect(parsed[:attributes]).to be_nil
   end
   it 'wont accept a mismatched password' do
     # expect(response.status).to eq(400)
