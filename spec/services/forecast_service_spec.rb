@@ -6,7 +6,6 @@ RSpec.describe 'ForecastService' do
     results = ForecastService.forecast_by_coordinates(coordinates)
 
     expect(results).to be_instance_of(Hash)
-    expect(results.size).to eq(7)
     expect(results.keys).to include(:timezone, :timezone_offset)
     expect(results.values).to_not include(nil)
 
