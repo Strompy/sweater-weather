@@ -33,7 +33,6 @@ RSpec.describe 'Users Endpoint' do
     expect(attributes[:password_confirmation]).to be_nil
   end
   it 'wont accept a duplicate email' do
-    # expect(response.status).to eq(400)
     og_user = create(:user, email: "whatever@example.com")
     headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' }
     user_params = {
@@ -59,11 +58,45 @@ RSpec.describe 'Users Endpoint' do
     expect(parsed[:attributes]).to be_nil
   end
   it 'wont accept a mismatched password' do
-    # expect(response.status).to eq(400)
+    headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+    user_params = {
+      "email": "whatever@example.com",
+      "password": "password",
+      "password_confirmation": "wrongpassword"
+    }
 
+    expect(User.count).to eq(0)
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+
+    expect(response.status).to eq(400)
+    expect(response.content_type).to eq('application/json')
+
+    expect(User.count).to eq(0)
+
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed[:errors]).to eq("Password confirmation doesn't match Password")
+    expect(parsed[:id]).to be_nil
+    expect(parsed[:attributes]).to be_nil
   end
   it 'wont accept a missing details' do
-    # expect(response.status).to eq(400)
+    headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+    user_params = {
+      "password": "password"
+    }
 
+    expect(User.count).to eq(0)
+    post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+
+    expect(response.status).to eq(400)
+    expect(response.content_type).to eq('application/json')
+
+    expect(User.count).to eq(0)
+
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed[:errors]).to eq("Email can't be blank and Password confirmation can't be blank")
+    expect(parsed[:id]).to be_nil
+    expect(parsed[:attributes]).to be_nil
   end
 end
