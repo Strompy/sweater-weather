@@ -22,6 +22,14 @@ RSpec.describe 'ForecastService' do
     expect(results[:daily][0][:temp][:max]).to_not be nil
     expect(results[:daily][0][:temp][:min]).to_not be nil
     expect(results[:daily][0][:weather][0][:description]).to_not be nil
+  end
+  it 'can return future forecast based on location and hours in the future', :vcr do
+    coordinates = { lat: 39.738453, lng: -104.984853 }
+    hours = 3
+    results = ForecastService.future_forecast(coordinates, hours)
 
+    expect(results.size).to eq 2
+    expect(results[:temp]).to_not be_nil
+    expect(results[:description]).to_not be_nil
   end
 end
