@@ -44,7 +44,7 @@ RSpec.describe 'Users Endpoint' do
     expect(User.count).to eq(1)
     post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
 
-    expect(response.status).to eq(400)
+    expect(response.status).to eq(403)
     expect(response.content_type).to eq('application/json')
 
     expect(User.count).to eq(1)
@@ -68,7 +68,7 @@ RSpec.describe 'Users Endpoint' do
     expect(User.count).to eq(0)
     post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
 
-    expect(response.status).to eq(400)
+    expect(response.status).to eq(409)
     expect(response.content_type).to eq('application/json')
 
     expect(User.count).to eq(0)
@@ -88,7 +88,7 @@ RSpec.describe 'Users Endpoint' do
     expect(User.count).to eq(0)
     post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
 
-    expect(response.status).to eq(400)
+    expect(response.status).to eq(409)
     expect(response.content_type).to eq('application/json')
 
     expect(User.count).to eq(0)

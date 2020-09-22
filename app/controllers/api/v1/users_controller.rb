@@ -5,7 +5,8 @@ class Api::V1::UsersController < ApplicationController
       render json: UserSerializer.new(user), status: :created
     else
       errors = user.errors.full_messages.to_sentence
-      render json: { errors: errors }, status: 400
+      status = errors.include?('taken') ? :forbidden : :conflict
+      render json: { errors: errors }, status: status
     end
   end
 
