@@ -25,8 +25,12 @@ RSpec.describe 'Users Endpoint' do
     expect(parsed[:id]).to eq(user.id.to_s)
 
     attributes = parsed[:attributes]
+    expect(attributes.keys).to eq([:email, :api_key])
     expect(attributes[:email]).to eq(user.email)
     expect(attributes[:api_key]).to eq(user.api_key)
+    expect(attributes[:password]).to be_nil
+    expect(attributes[:password_digest]).to be_nil
+    expect(attributes[:password_confirmation]).to be_nil
   end
   it 'wont accept a duplicate email' do
     # expect(response.status).to eq(400)
