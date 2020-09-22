@@ -1,14 +1,12 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    require "pry"; binding.pry
     user = User.find_by(email: params[:email])
     if user.nil?
-      # render no email error
+      render json: { errors: 'Invalid email' }, status: :unauthorized
     elsif user.authenticate(params[:password])
-      # create session?
       render json: UserSerializer.new(user)
     else
-      # render password error
+      render json: { errors: 'Incorrect password' }, status: :unauthorized
     end
   end
 
