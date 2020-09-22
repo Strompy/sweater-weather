@@ -4,7 +4,7 @@ RSpec.describe 'Road Trip endpoint' do
   before :each do
     @user = create(:user)
   end
-  it 'accepts post with key, start and end. returns travel and forecast' do
+  it 'accepts post with key, start and end. returns travel and forecast', :vcr do
     origin = 'Denver,CO'
     destination = 'Pueblo,co'
 
@@ -21,7 +21,7 @@ RSpec.describe 'Road Trip endpoint' do
     expect(response.content_type).to eq('application/json')
     parsed = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(parsed[:type]).to eq('road trip')
+    expect(parsed[:type]).to eq('road_trip')
     # expect(parsed[:id]).to eq(@user.id.to_s)(nil)
     attributes = parsed[:attributes]
     expect(attributes.keys).to eq([:origin, :destination, :travel_time, :arrival_forecast])
