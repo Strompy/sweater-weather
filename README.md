@@ -111,6 +111,13 @@ Or run individual tests by including the file path at the end of the above comma
 
 ## Sweater Weather Endpoints
 
+* [Get weather forecast](#get-a-weather-forecast-for-a-specific-location)
+* [Get an image](#get-an-image-for-a-specific-location)
+* [Register a new user](#register-a-new-user)
+* [Login a user](#log-in-an-existing-user)
+* [Road trip planner](#road-trip-planner-for-registered-users)
+
+
 #### Get a weather forecast for a specific location:
 
 ```
