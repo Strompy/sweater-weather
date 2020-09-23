@@ -39,13 +39,13 @@ RSpec.describe 'Get Weather by City Endpoint' do
       ]
     )
     expect(current.values).to_not include (nil)
-    expect(current[:date_time].class).to eq(Integer)
+    expect(current[:date_time].class).to eq(String)
     expect(current[:temp].class).to eq(Float)
     expect(current[:description].class).to eq(String)
     expect(current[:high].class).to eq(Float)
     expect(current[:low].class).to eq(Float)
-    expect(current[:sunrise].class).to eq(Integer)
-    expect(current[:sunset].class).to eq(Integer)
+    expect(current[:sunrise].class).to eq(String)
+    expect(current[:sunset].class).to eq(String)
     expect(current[:feels_like].class).to eq(Float)
     expect(current[:humidity].class).to eq(Integer)
     expect(current[:visibility_in_miles].class).to eq(Float)
@@ -56,7 +56,7 @@ RSpec.describe 'Get Weather by City Endpoint' do
     hourly.each do |hour|
       expect(hour.keys).to eq([:date_time, :temp, :description])
       expect(hour.values).to_not include(nil)
-      expect(hour[:date_time].class).to eq(Integer)
+      expect(hour[:date_time].class).to eq(String)
       expect(hour[:temp].class).to eq(Float)
       expect(hour[:description].class).to eq(String)
     end
@@ -74,7 +74,7 @@ RSpec.describe 'Get Weather by City Endpoint' do
           ]
         )
         expect(day.values).to_not include(nil)
-        expect(day[:date_time].class).to eq(Integer)
+        expect(day[:date_time].class).to eq(String)
         expect(day[:high_temp].class).to eq(Float)
         expect(day[:low_temp].class).to eq(Float)
         expect(day[:total_precipitation].class).to eq(Integer)

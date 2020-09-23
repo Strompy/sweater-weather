@@ -19,13 +19,13 @@ class Forecast
 
   def set_current(current, today)
     {
-      date_time: current[:dt],
+      date_time: format_time(current[:dt]),
       temp: current[:temp],
       description: current[:weather][0][:description],
       high: today[:max],
       low: today[:min],
-      sunrise: current[:sunrise],
-      sunset: current[:sunset],
+      sunrise: format_time(current[:sunrise]),
+      sunset: format_time(current[:sunset]),
       feels_like: current[:feels_like],
       humidity: current[:humidity],
       visibility_in_miles: (current[:visibility].to_f / 5280).round(2),
@@ -41,7 +41,7 @@ class Forecast
 
   def parse_hourly(hourly)
     {
-      date_time: hourly[:dt],
+      date_time: format_time(hourly[:dt]),
       temp: hourly[:temp],
       description: hourly[:weather][0][:description]
     }
@@ -55,11 +55,15 @@ class Forecast
 
   def parse_daily(daily)
     {
-      date_time: daily[:dt],
+      date_time: format_time(daily[:dt]),
       high_temp: daily[:temp][:max],
       low_temp: daily[:temp][:min],
       total_precipitation: daily[:rain].to_i + daily[:snow].to_i,
       description: daily[:weather][0][:description]
     }
+  end
+
+  def format_time(time)
+    Time.at(time)
   end
 end
