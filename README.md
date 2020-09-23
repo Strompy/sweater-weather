@@ -146,13 +146,13 @@ Example response:
         "offset": -21600
       },
       "current": {
-        "date_time": 1600828298,
+        "date_time": "2020-09-23T07:49:54.000-06:00",
         "temp": 68.88,
         "description": "broken clouds",
         "high": 86.74,
         "low": 66.94,
-        "sunrise": 1600778883,
-        "sunset": 1600822611,
+        "sunrise": "2020-09-23T06:48:58.000-06:00",
+        "sunset": "2020-09-23T18:55:12.000-06:00",
         "feels_like": 60.8,
         "humidity": 30,
         "visibility_in_miles": 1.89,
@@ -160,77 +160,77 @@ Example response:
       },
       "hourly": [
         {
-          "date_time": 1600826400,
+          "date_time": "2020-09-23T07:00:00.000-06:00",
           "temp": 68.88,
           "description": "broken clouds"
         },
         {
-          "date_time": 1600830000,
+          "date_time": "2020-09-23T08:00:00.000-06:00",
           "temp": 71.33,
           "description": "overcast clouds"
         },
         {
-          "date_time": 1600833600,
+          "date_time": "2020-09-23T09:00:00.000-06:00",
           "temp": 70.75,
           "description": "overcast clouds"
         },
         {
-          "date_time": 1600837200,
+          "date_time": "2020-09-23T10:00:00.000-06:00",
           "temp": 70.56,
           "description": "overcast clouds"
         },
         {
-          "date_time": 1600840800,
+          "date_time": "2020-09-23T11:00:00.000-06:00",
           "temp": 70.25,
           "description": "overcast clouds"
         },
         {
-          "date_time": 1600844400,
+          "date_time": "2020-09-23T12:00:00.000-06:00",
           "temp": 69.67,
           "description": "overcast clouds"
         },
         {
-          "date_time": 1600848000,
+          "date_time": "2020-09-23T13:00:00.000-06:00",
           "temp": 68.94,
           "description": "overcast clouds"
         },
         {
-          "date_time": 1600851600,
+          "date_time": "2020-09-23T14:00:00.000-06:00",
           "temp": 67.95,
           "description": "broken clouds"
         }
       ],
       "daily": [
         {
-          "date_time": 1600797600,
+          "date_time": "2020-09-23T12:00:00.000-06:00",
           "high_temp": 86.74,
           "low_temp": 66.94,
           "total_precipitation": 0,
           "description": "light rain"
         },
         {
-          "date_time": 1600884000,
+          "date_time": "2020-09-24T12:00:00.000-06:00",
           "high_temp": 84.65,
           "low_temp": 67.03,
           "total_precipitation": 0,
           "description": "light rain"
         },
         {
-          "date_time": 1600970400,
+          "date_time": "2020-09-25T12:00:00.000-06:00",
           "high_temp": 88.25,
           "low_temp": 66.27,
           "total_precipitation": 0,
           "description": "clear sky"
         },
         {
-          "date_time": 1601056800,
+          "date_time": "2020-09-26T12:00:00.000-06:00",
           "high_temp": 90.43,
           "low_temp": 69.04,
           "total_precipitation": 0,
           "description": "clear sky"
         },
         {
-          "date_time": 1601143200,
+          "date_time": "2020-09-27T12:00:00.000-06:00",
           "high_temp": 83.25,
           "low_temp": 65.55,
           "total_precipitation": 0,
