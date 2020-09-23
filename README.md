@@ -111,7 +111,7 @@ Or run individual tests by including the file path at the end of the above comma
 
 ## Sweater Weather Endpoints
 
-Get a weather forecast for a specific location:
+#### Get a weather forecast for a specific location:
 
 ```
 GET /api/v1/forecast?location=<location>
@@ -233,7 +233,7 @@ Example response:
 }
 ```
 
-Get an image for a specific location:
+#### Get an image for a specific location:
 
 ```
 GET /api/v1/backgrouds?location=<location>
@@ -265,11 +265,12 @@ Example response:
 }
 ```
 
-Register a new user:
+#### Register a new user:
 
 ```
 POST /api/v1/users
 ```
+
 Request body:
 ```
 {
@@ -309,7 +310,7 @@ response body:
 }
 ```
 
-Log in an existing user:
+#### Log in an existing user:
 
 ```
 POST /api/v1/sessions
@@ -352,7 +353,7 @@ response body:
 }
 ```
 
-Road trip planner for registered users:
+#### Road trip planner for registered users:
 
 ```
 POST /api/v1/road_trip
