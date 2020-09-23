@@ -22,14 +22,14 @@ RSpec.describe 'Road Trip endpoint' do
     parsed = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(parsed[:type]).to eq('road_trip')
-    # expect(parsed[:id]).to eq(@user.id.to_s)(nil)
+    
     attributes = parsed[:attributes]
     expect(attributes.keys).to eq([:origin, :destination, :travel_time, :arrival_forecast])
     expect(attributes[:origin]).to eq(origin)
     expect(attributes[:destination]).to eq(destination)
     expect(attributes[:travel_time]).to_not be_nil
     expect(attributes[:arrival_forecast].size).to eq(2)
-    expect(attributes[:arrival_forecast][:temp]).to_not be_nil
+    expect(attributes[:arrival_forecast][:temp].class).to eq(Float)
     expect(attributes[:arrival_forecast][:description]).to_not be_nil
 
   end
