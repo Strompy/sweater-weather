@@ -33,7 +33,7 @@ Built to consume multiple APIs to retrieve data. Consumes the following APIs:
 - Determine completion criteria based on the needs of other developers
 - Research, select, and consume an API based on your needs as a
 
-### Built with:
+### Tech Stack:
 
 - Ruby: 2.5.3
 - Rails: 5.2.4
