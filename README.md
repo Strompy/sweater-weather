@@ -109,6 +109,8 @@ $ bundle exec rspec
 
 Or run individual tests by including the file path at the end of the above command.
 
+This project utilizes WebMock and VCR. VCR cassettes are recorded once a day.
+
 ## Sweater Weather Endpoints
 
 * [Get weather forecast](#get-a-weather-forecast-for-a-specific-location)
