@@ -1,7 +1,7 @@
 class ForecastService
   def self.forecast_by_coordinates(coordinates)
     response = get_json(coordinates[:lat], coordinates[:lng])
-    parsed = JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def self.future_forecast(coordinates, hours)
