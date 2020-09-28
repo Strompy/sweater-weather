@@ -2,6 +2,14 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2
 
+commands:
+  configure_bundler:
+    description: Configure bundler
+    steps:
+      - run:
+          name: Configure bundler
+          command: gem install bundler
+
 jobs:
   build:
     docker:
@@ -9,7 +17,9 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
-      - ruby/install-deps
+      - run: Install Bundle
+          name: Install bundle
+          command: bundle install
       - run:
           name: Which bundler?
           command: bundle -v
