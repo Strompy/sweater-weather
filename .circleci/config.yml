@@ -19,7 +19,7 @@ jobs:
           command: bundle -v
       - ruby/bundle-install
 
-  test: 
+  test:
     docker:
       - image: circleci/ruby:2.5.3-stretch-node
         environment: # environment variables for primary container
@@ -49,5 +49,12 @@ jobs:
       - run:
           name: All tests
           command: bundle exec rspec
-
-
+          
+workflows:
+  version: 2
+  build_and_test:     # The name of our workflow is "build_and_test"
+    jobs:             # The list of jobs we run as part of this workflow.
+      - build         # Run build first.
+      - test:         # Then run test,
+          requires:   # Test requires that build passes for it to run.
+            - build
